@@ -129,7 +129,7 @@ public class ApplicationController {
                                    @RequestParam(name = "factionName") String factionName,
                                    @RequestParam(name = "unitCategory") String unitCategory,
                                    @RequestParam(name = "weaponType") String weaponType,
-                                   @RequestParam(name = "attributes", required = false) String attributes,
+                                   @RequestParam(name = "attributes") String attributes,
                                    @RequestParam(name = "cost", required = false, defaultValue = "0") Integer cost,
                                    @RequestParam(name = "upkeep", required = false, defaultValue = "0") Integer upkeep,
                                    @RequestParam(name = "health", required = false, defaultValue = "0") Integer health,

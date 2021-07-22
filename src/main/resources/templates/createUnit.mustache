@@ -10,29 +10,31 @@
 {{#unit}}
     <h1 style="text-align: center">You have just created unit : {{name}} with id {{id}} and next parameters: </h1>
     <h2>faction - {{#faction}}{{name}}{{/faction}}</h2>
-    <h2>faction - {{#category}}{{unitCategory}}{{/category}}</h2>
-    <h2>faction - {{cost}}</h2>
-    <h2>faction - {{upkeep}}</h2>
-    <h2>faction - {{health}}</h2>
-    <h2>faction - {{leadership}}</h2>
-    <h2>faction - {{speed}}</h2>
-    <h2>faction - {{meleeAttack}}</h2>
-    <h2>faction - {{meleeDefence}}</h2>
-    <h2>faction - {{chargeBonus}}</h2>
-    <h2>faction - {{missileResistance}}</h2>
-    <h2>faction - {{magicResistance}}</h2>
-    <h2>faction - {{armorProtection}}</h2>
-    <h2>faction - {{weaponType}}</h2>
+    <h2>category - {{#category}}{{unitCategory}}{{/category}}</h2>
+    <h2>cost - {{cost}}</h2>
+    <h2>upkeep - {{upkeep}}</h2>
+    <h2>health - {{health}}</h2>
+    <h2>leadership - {{leadership}}</h2>
+    <h2>speed - {{speed}}</h2>
+    <h2>meleeAttack - {{meleeAttack}}</h2>
+    <h2>meleeDefence - {{meleeDefence}}</h2>
+    <h2>chargeBonus - {{chargeBonus}}</h2>
+    <h2>missileResistance - {{missileResistance}}</h2>
+    <h2>magicResistance - {{magicResistance}}</h2>
+    <h2>armorProtection - {{armorProtection}}</h2>
+    <h2>weaponType - {{#weaponType}}
+        {{type}}
+    {{/weaponType}}</h2>
     <h2>faction - {{weaponDamage}}</h2>
-    <h2>faction - {{armourPiercingDamage}}</h2>
-    <h2>faction - {{meleeInterval}}</h2>
-    <h2>faction - {{magicalAttack}}</h2>
-    <h2>faction - {{range}}</h2>
-    <h2>faction - {{unitSize}}</h2>
-    <h2>faction - {{turns}}</h2>
-        {{#attributes}}
-            <h2>attributes - {{description}}</h2>
-        {{/attributes}}
+    <h2>weaponDamage - {{armourPiercingDamage}}</h2>
+    <h2>meleeInterval - {{meleeInterval}}</h2>
+    <h2>magicalAttack - {{magicalAttack}}</h2>
+    <h2>range - {{range}}</h2>
+    <h2>unitSize - {{unitSize}}</h2>
+    <h2>turns - {{turns}}</h2>
+    {{#attributes}}
+        <h2>attributes - {{description}}</h2>
+    {{/attributes}}
 {{/unit}}
 </body>
 
