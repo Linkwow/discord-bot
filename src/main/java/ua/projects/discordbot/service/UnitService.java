@@ -21,7 +21,7 @@ import java.util.Set;
 
 @Service
 @Transactional
-public class UnitService extends CommonService implements CommonRepository<Unit> {
+public class UnitService implements CommonRepository<Unit> {
 
     private static final Logger logger = LoggerFactory.getLogger(UnitService.class);
 
@@ -79,7 +79,6 @@ public class UnitService extends CommonService implements CommonRepository<Unit>
             unit.setAttributeSet(attributeSet);
             setUnitParameters(unit, parameters);
             unit = repository.save(unit);
-            updateCommands();
         } catch (InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
             logger.error("Error. Check the create method " + e);
             throw new RuntimeException("Error while invocation parameter set");
@@ -129,7 +128,6 @@ public class UnitService extends CommonService implements CommonRepository<Unit>
             throw new RuntimeException("Error while invocation parameter set");
         }
         logger.debug("Unit was updated successfully");
-        updateCommands();
         return unit;
     }
 
@@ -137,7 +135,6 @@ public class UnitService extends CommonService implements CommonRepository<Unit>
     public void delete(Integer id) {
         Unit unit = find(id);
         repository.delete(unit);
-        updateCommands();
         logger.debug("Unit was deleted successfully");
     }
 

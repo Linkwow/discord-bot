@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CategoryService extends CommonService implements CommonRepository<Category> {
+public class CategoryService implements CommonRepository<Category> {
 
     private static final Logger logger = LoggerFactory.getLogger(CategoryService.class);
 
@@ -33,7 +33,6 @@ public class CategoryService extends CommonService implements CommonRepository<C
         try {
             if (notPresent(unitCategory)) {
                 category = repository.save(new Category(unitCategory));
-                updateCommands();
             }
         } catch (TransactionSystemException exception) {
             logger.error("Invalid input: " + exception.getMessage());
@@ -71,7 +70,6 @@ public class CategoryService extends CommonService implements CommonRepository<C
             if (notPresent(unitCategory))
                 category.setUnitCategory(unitCategory);
             repository.save(category);
-            updateCommands();
         } catch (TransactionSystemException transactionSystemException) {
             logger.error("Invalid input: " + transactionSystemException.getMessage());
             throw new ValidationException("Category is mandatory. Category should be a string");
@@ -84,7 +82,6 @@ public class CategoryService extends CommonService implements CommonRepository<C
     public void delete(Integer id) {
         Category category = find(id);
         repository.delete(category);
-        updateCommands();
         logger.debug("Category was deleted successfully");
     }
 

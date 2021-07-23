@@ -22,7 +22,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class FactionService extends CommonService implements CommonRepository<Faction> {
+public class FactionService implements CommonRepository<Faction> {
 
     private static final Logger logger = LoggerFactory.getLogger(FactionService.class);
 
@@ -48,7 +48,6 @@ public class FactionService extends CommonService implements CommonRepository<Fa
                     () -> ValidationException.notValid("Race name is mandatory. Name should be a string")));
             faction.setRace(race);
             repository.save(faction);
-            updateCommands();
         } catch (TransactionSystemException | ConstraintViolationException exception) {
             logger.error("Invalid input: " + exception.getMessage());
             throw new ValidationException("Name is mandatory. Name should be a string");
@@ -88,7 +87,6 @@ public class FactionService extends CommonService implements CommonRepository<Fa
             faction.setRace(race);
         }
         repository.save(faction);
-        updateCommands();
         logger.debug("Attribute was updated successfully");
         return faction;
     }
@@ -97,7 +95,6 @@ public class FactionService extends CommonService implements CommonRepository<Fa
     public void delete(Integer id) {
         Faction faction = find(id);
         repository.delete(faction);
-        updateCommands();
         logger.debug("Faction was deleted successfully");
     }
 
