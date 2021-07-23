@@ -26,7 +26,7 @@ public class Weapon {
     @Column(name = "id", updatable = false)
     private Integer id;
 
-    @NotBlank
+    @NotBlank(message = "name is mandatory")
     @Column(name = "type")
     private String type;
 

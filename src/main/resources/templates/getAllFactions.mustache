@@ -7,11 +7,12 @@
 </head>
 
 <body>
-{{#races}}
+{{#factions}}
     <h1>{{id}}</h1>
     <h2>{{name}}</h2>
-    <h3>{{race}}</h3>
-{{/races}}
+    <h3>{{#race}}
+        {{name}}{{/race}}</h3>
+{{/factions}}
 </body>
 
 </html>

@@ -25,7 +25,7 @@ public class Category {
     @Column(name = "id", updatable = false)
     private Integer id;
 
-    @NotBlank
+    @NotBlank(message = "unitCategory is mandatory")
     @Column(name = "unit_category")
     private String unitCategory;
 

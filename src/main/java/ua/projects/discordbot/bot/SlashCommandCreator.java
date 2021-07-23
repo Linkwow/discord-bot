@@ -58,8 +58,7 @@ public class SlashCommandCreator {
     public void setRacesAndFactions() {
         racesAndFactions.clear();
         Collections.addAll(racesAndFactions,
-                SlashCommandOption.createWithChoices(SlashCommandOptionType.STRING, "race", "Choose race", true, races),
-                SlashCommandOption.createWithChoices(SlashCommandOptionType.STRING, "faction", "Choose faction", true, factions));
+                SlashCommandOption.createWithChoices(SlashCommandOptionType.STRING, "race", "Choose race", true, races));
     }
 
 

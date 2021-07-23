@@ -9,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 import ua.projects.discordbot.persistence.*;
 import ua.projects.discordbot.service.*;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,8 +62,8 @@ public class ApplicationController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/user/showAllUnitsFromChosenFaction")
     public ModelAndView getUnitsOfFaction(
-            @Valid @RequestParam(name = "faction") String faction,
-            @Valid @RequestParam(name = "category") String category) {
+            @RequestParam(name = "faction") String faction,
+            @RequestParam(name = "category") String category) {
         Map<String, Object> units = new HashMap<>();
         units.put("units", unitService.getUnitsByFactionAndCategory(
                 faction.replace("_", " "),
@@ -75,16 +74,16 @@ public class ApplicationController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/user/showAllFactionsFromChosenRace")
     public ModelAndView getFactionsOfRace(
-            @Valid @RequestParam(name = "race") String race) {
+            @RequestParam(name = "race") String race) {
         Map<String, Object> factions = new HashMap<>();
-        factions.put("units", factionService.getFactionsByRace(
+        factions.put("factions", factionService.getFactionsByRace(
                 race.replace("_", " ")));
         return new ModelAndView("getAllFactions", factions);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/admin/createAttribute")
-    public ModelAndView createAttribute(@Valid @RequestParam(name = "attributeName") String description) {
+    public ModelAndView createAttribute(@RequestParam(name = "attributeName") String description) {
         ModelAndView modelAndView = new ModelAndView("createAttribute");
         Attribute attribute = attributeService.create(description);
         modelAndView.addObject("id", attribute.getId());

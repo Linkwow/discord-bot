@@ -28,15 +28,15 @@ public class Unit {
     @Column(name = "id", updatable = false)
     private Integer id;
 
-    @NotBlank
+    @NotBlank(message = "name is mandatory")
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "faction")
     private Faction faction;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category")
     private Category category;
 
@@ -73,7 +73,7 @@ public class Unit {
     @Column(name = "armor_protection")
     private Integer armorProtection;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "weapon_type")
     private Weapon weaponType;
 

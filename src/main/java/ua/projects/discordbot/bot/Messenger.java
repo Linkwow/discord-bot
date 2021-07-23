@@ -56,11 +56,11 @@ public class Messenger {
                     sb.append(unitType);
                     sb.deleteCharAt(sb.length() - 1);
                 }
-                reference = "http://localhost:8080/totalWarWarhammer/user/showAllUnitsFromChosenFaction?" + "faction=" + faction + "&category=" + sb;
+                reference = "http://localhost:8080/total-war-warhammer/user/showAllUnitsFromChosenFaction?" + "faction=" + faction + "&category=" + sb;
                 sb.setLength(0);
             } else if (slashCommandInteraction.getCommandName().equals("show-factions")) {
                 race = slashCommandInteraction.getFirstOptionStringValue().orElseThrow();
-                reference = "http://localhost:8080/totalWarWarhammer/user/showAllFactionsFromCurrentRace?race=" + race;
+                reference = "http://localhost:8080/total-war-warhammer/user/showAllFactionsFromChosenRace?race=" + race;
             }
             slashCommandInteraction.createImmediateResponder().setContent(reference).respond();
         });

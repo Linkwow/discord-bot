@@ -1,16 +1,17 @@
 package ua.projects.discordbot.service;
 
+import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.projects.discordbot.exceptions.EntityNotFoundException;
 import ua.projects.discordbot.exceptions.ValidationException;
 import ua.projects.discordbot.persistence.*;
 import ua.projects.discordbot.repository.*;
 
-import javax.transaction.Transactional;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;

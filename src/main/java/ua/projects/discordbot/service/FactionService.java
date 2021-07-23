@@ -8,6 +8,7 @@ import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionSystemException;
 
+import org.springframework.transaction.annotation.Transactional;
 import ua.projects.discordbot.exceptions.EntityNotFoundException;
 import ua.projects.discordbot.exceptions.ValidationException;
 import ua.projects.discordbot.persistence.Faction;
@@ -15,7 +16,6 @@ import ua.projects.discordbot.persistence.Race;
 import ua.projects.discordbot.repository.CommonRepository;
 import ua.projects.discordbot.repository.FactionRepository;
 
-import javax.transaction.Transactional;
 import javax.validation.ConstraintViolationException;
 import java.util.List;
 import java.util.Optional;
@@ -103,7 +103,8 @@ public class FactionService extends CommonService implements CommonRepository<Fa
 
     public List<Faction> getFactionsByRace(String raceName) {
         Race race = raceService.getRaceByName(raceName);
-        return repository.findFactionsByRace(race.getId());
+        List<Faction> test = repository.findFactionsByRace(race.getId());
+        return test;
     }
 
     public Faction getFactionByName(String name) {

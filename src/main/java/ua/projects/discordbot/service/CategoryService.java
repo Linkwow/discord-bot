@@ -7,6 +7,7 @@ import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionSystemException;
 
+import org.springframework.transaction.annotation.Transactional;
 import ua.projects.discordbot.exceptions.EntityNotFoundException;
 import ua.projects.discordbot.exceptions.ValidationException;
 import ua.projects.discordbot.persistence.Category;

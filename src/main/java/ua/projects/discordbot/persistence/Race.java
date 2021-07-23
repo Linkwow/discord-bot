@@ -25,7 +25,7 @@ public class Race implements Serializable {
     @Column(name = "id", updatable = false)
     private Integer id;
 
-    @NotBlank
+    @NotBlank(message = "name is mandatory")
     @Column(name = "name")
     private String name;
 
