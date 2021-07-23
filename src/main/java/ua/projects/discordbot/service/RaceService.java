@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RaceService implements CommonRepository<Race> {
+public class RaceService extends CommonService implements CommonRepository<Race> {
 
     private static final Logger logger = LoggerFactory.getLogger(RaceService.class);
 
@@ -32,6 +32,7 @@ public class RaceService implements CommonRepository<Race> {
         try {
             if (notPresent(name)) {
                 race = repository.save(new Race(name));
+                updateCommands();
             }
         } catch (TransactionSystemException exception) {
             logger.error("Invalid input: " + exception.getMessage());
@@ -68,6 +69,7 @@ public class RaceService implements CommonRepository<Race> {
             if (notPresent(name))
                 race.setName(name);
             repository.save(race);
+            updateCommands();
         } catch (TransactionSystemException transactionSystemException) {
             logger.error("Invalid input: " + transactionSystemException.getMessage());
             throw new ValidationException("Race name is mandatory. Race name should be a string");
@@ -80,6 +82,7 @@ public class RaceService implements CommonRepository<Race> {
     public void delete(Integer id) {
         Race race = find(id);
         repository.delete(race);
+        updateCommands();
         logger.debug("Race was deleted successfully");
     }
 

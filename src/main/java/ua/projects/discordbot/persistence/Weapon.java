@@ -60,6 +60,7 @@ public class Weapon {
         this.type = type;
     }
 
+    @SuppressWarnings("unused")
     public void setUnitList(List<Unit> unitList) {
         this.unitList = unitList;
     }

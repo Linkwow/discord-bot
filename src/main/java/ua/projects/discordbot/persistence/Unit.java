@@ -132,46 +132,57 @@ public class Unit {
         return category;
     }
 
+    @SuppressWarnings("unused")
     public Integer getCost() {
         return cost;
     }
 
+    @SuppressWarnings("unused")
     public Integer getUpkeep() {
         return upkeep;
     }
 
+    @SuppressWarnings("unused")
     public Integer getHealth() {
         return health;
     }
 
+    @SuppressWarnings("unused")
     public Integer getLeadership() {
         return leadership;
     }
 
+    @SuppressWarnings("unused")
     public Integer getSpeed() {
         return speed;
     }
 
+    @SuppressWarnings("unused")
     public Integer getMeleeAttack() {
         return meleeAttack;
     }
 
+    @SuppressWarnings("unused")
     public Integer getMeleeDefence() {
         return meleeDefence;
     }
 
+    @SuppressWarnings("unused")
     public Integer getChargeBonus() {
         return chargeBonus;
     }
 
+    @SuppressWarnings("unused")
     public Integer getMissileResistance() {
         return missileResistance;
     }
 
+    @SuppressWarnings("unused")
     public Integer getMagicResistance() {
         return magicResistance;
     }
 
+    @SuppressWarnings("unused")
     public Integer getArmorProtection() {
         return armorProtection;
     }
@@ -180,30 +191,37 @@ public class Unit {
         return weaponType;
     }
 
+    @SuppressWarnings("unused")
     public Integer getWeaponDamage() {
         return weaponDamage;
     }
 
+    @SuppressWarnings("unused")
     public Integer getArmourPiercingDamage() {
         return armourPiercingDamage;
     }
 
+    @SuppressWarnings("unused")
     public Integer getMeleeInterval() {
         return meleeInterval;
     }
 
+    @SuppressWarnings("unused")
     public Integer getMagicalAttack() {
         return magicalAttack;
     }
 
+    @SuppressWarnings("unused")
     public Integer getRange() {
         return range;
     }
 
+    @SuppressWarnings("unused")
     public Integer getUnitSize() {
         return unitSize;
     }
 
+    @SuppressWarnings("unused")
     public Integer getTurns() {
         return turns;
     }
@@ -226,22 +244,27 @@ public class Unit {
         category.getUnitList().add(this);
     }
 
+    @SuppressWarnings("unused")
     public void setCost(Integer cost) {
         this.cost = cost;
     }
 
+    @SuppressWarnings("unused")
     public void setUpkeep(Integer upkeep) {
         this.upkeep = upkeep;
     }
 
+    @SuppressWarnings("unused")
     public void setHealth(Integer health) {
         this.health = health;
     }
 
+    @SuppressWarnings("unused")
     public void setLeadership(Integer leadership) {
         this.leadership = leadership;
     }
 
+    @SuppressWarnings("unused")
     public void setSpeed(Integer speed) {
         this.speed = speed;
     }
@@ -254,18 +277,22 @@ public class Unit {
         this.meleeDefence = meleeDefence;
     }
 
+    @SuppressWarnings("unused")
     public void setChargeBonus(Integer chargeBonus) {
         this.chargeBonus = chargeBonus;
     }
 
+    @SuppressWarnings("unused")
     public void setMissileResistance(Integer missileResistance) {
         this.missileResistance = missileResistance;
     }
 
+    @SuppressWarnings("unused")
     public void setMagicResistance(Integer magicResistance) {
         this.magicResistance = magicResistance;
     }
 
+    @SuppressWarnings("unused")
     public void setArmorProtection(Integer armorProtection) {
         this.armorProtection = armorProtection;
     }
@@ -275,30 +302,37 @@ public class Unit {
         weaponType.getUnitList().add(this);
     }
 
+    @SuppressWarnings("unused")
     public void setWeaponDamage(Integer weaponDamage) {
         this.weaponDamage = weaponDamage;
     }
 
+    @SuppressWarnings("unused")
     public void setArmourPiercingDamage(Integer armourPiercingDamage) {
         this.armourPiercingDamage = armourPiercingDamage;
     }
 
+    @SuppressWarnings("unused")
     public void setMeleeInterval(Integer meleeInterval) {
         this.meleeInterval = meleeInterval;
     }
 
+    @SuppressWarnings("unused")
     public void setMagicalAttack(Integer magicalAttack) {
         this.magicalAttack = magicalAttack;
     }
 
+    @SuppressWarnings("unused")
     public void setRange(Integer range) {
         this.range = range;
     }
 
+    @SuppressWarnings("unused")
     public void setUnitSize(Integer unitSize) {
         this.unitSize = unitSize;
     }
 
+    @SuppressWarnings("unused")
     public void setTurns(Integer turns) {
         this.turns = turns;
     }

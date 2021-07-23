@@ -1,6 +1,5 @@
 package ua.projects.discordbot.service;
 
-import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ import java.util.Set;
 
 @Service
 @Transactional
-public class UnitService implements CommonRepository<Unit> {
+public class UnitService extends CommonService implements CommonRepository<Unit> {
 
     private static final Logger logger = LoggerFactory.getLogger(UnitService.class);
 
@@ -79,6 +78,7 @@ public class UnitService implements CommonRepository<Unit> {
             unit.setAttributeSet(attributeSet);
             setUnitParameters(unit, parameters);
             unit = repository.save(unit);
+            updateCommands();
         } catch (InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
             logger.error("Error. Check the create method " + e);
             throw new RuntimeException("Error while invocation parameter set");
@@ -128,6 +128,7 @@ public class UnitService implements CommonRepository<Unit> {
             throw new RuntimeException("Error while invocation parameter set");
         }
         logger.debug("Unit was updated successfully");
+        updateCommands();
         return unit;
     }
 
@@ -135,6 +136,7 @@ public class UnitService implements CommonRepository<Unit> {
     public void delete(Integer id) {
         Unit unit = find(id);
         repository.delete(unit);
+        updateCommands();
         logger.debug("Unit was deleted successfully");
     }
 
@@ -151,6 +153,7 @@ public class UnitService implements CommonRepository<Unit> {
         }
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     private boolean notPresent(String name) {
         if (repository.existsUnitByNameIs(name))
             throw new ValidationException("Unit with " + name + " presents in dataBase. Unit name should be unique.");

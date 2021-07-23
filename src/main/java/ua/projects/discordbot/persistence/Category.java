@@ -55,6 +55,7 @@ public class Category {
         this.unitCategory = unitCategory;
     }
 
+    @SuppressWarnings("unused")
     public void setUnitList(List<Unit> unitList) {
         this.unitList = unitList;
     }

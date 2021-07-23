@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class AttributeService implements CommonRepository<Attribute> {
+public class AttributeService extends CommonService implements CommonRepository<Attribute> {
 
     private static final Logger logger = LoggerFactory.getLogger(AttributeService.class);
 
@@ -32,6 +32,7 @@ public class AttributeService implements CommonRepository<Attribute> {
         try {
             if (notPresent(description)) {
                 attribute = repository.save(new Attribute(description));
+                updateCommands();
             }
         } catch (TransactionSystemException exception) {
             logger.error("Invalid input: " + exception.getMessage());
@@ -69,6 +70,7 @@ public class AttributeService implements CommonRepository<Attribute> {
             if (notPresent(description))
                 attribute.setDescription(description);
             repository.save(attribute);
+            updateCommands();
         } catch (TransactionSystemException transactionSystemException) {
             logger.error("Invalid input: " + transactionSystemException.getMessage());
             throw new ValidationException("Description is mandatory. Description should be a string");
@@ -81,6 +83,7 @@ public class AttributeService implements CommonRepository<Attribute> {
     public void delete(Integer id) {
         Attribute attribute = find(id);
         repository.delete(attribute);
+        updateCommands();
         logger.debug("Attribute was deleted successfully");
     }
 

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class WeaponService implements CommonRepository<Weapon> {
+public class WeaponService extends CommonService implements CommonRepository<Weapon> {
 
     private static final Logger logger = LoggerFactory.getLogger(WeaponService.class);
 
@@ -32,6 +32,7 @@ public class WeaponService implements CommonRepository<Weapon> {
         try {
             if (notPresent(type)) {
                 weapon = repository.save(new Weapon(type));
+                updateCommands();
             }
         } catch (TransactionSystemException exception) {
             logger.error("Invalid input: " + exception.getMessage());
@@ -69,6 +70,7 @@ public class WeaponService implements CommonRepository<Weapon> {
             if (notPresent(type))
                 weapon.setType(type);
             repository.save(weapon);
+            updateCommands();
         } catch (TransactionSystemException transactionSystemException) {
             logger.error("Invalid input: " + transactionSystemException.getMessage());
             throw new ValidationException("Weapon type is mandatory. Weapon type should be a string");
@@ -81,6 +83,7 @@ public class WeaponService implements CommonRepository<Weapon> {
     public void delete(Integer id) {
         Weapon weapon = find(id);
         repository.delete(weapon);
+        updateCommands();
         logger.debug("Weapon was deleted successfully");
     }
 

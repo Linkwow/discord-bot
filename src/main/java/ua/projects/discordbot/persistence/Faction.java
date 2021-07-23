@@ -62,6 +62,7 @@ public class Faction implements Serializable {
         race.getFactionList().add(this);
     }
 
+    @SuppressWarnings("unused")
     public void setUnitList(List<Unit> unitList) {
         this.unitList = unitList;
     }

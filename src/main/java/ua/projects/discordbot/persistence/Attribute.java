@@ -59,6 +59,7 @@ public class Attribute {
         this.id = id;
     }
 
+    @SuppressWarnings("unused")
     public void setUnitSet(Set<Unit> unitSet) {
         this.unitSet = unitSet;
     }
