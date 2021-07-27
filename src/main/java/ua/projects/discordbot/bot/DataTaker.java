@@ -28,21 +28,23 @@ public class DataTaker {
         this.factionRepository = factionRepository;
     }
 
-    public DataTaker(){
+    public DataTaker() {
 
     }
 
-    public List<String> getRacesFromDataBase(){
+    //todo : change method to stream
+    public List<String> getRacesFromDataBase() {
         List<String> data = new ArrayList<>();
-        for(Race race : raceRepository.findAll()){
+        for (Race race : raceRepository.findAll()) {
             data.add(race.getName());
         }
         return data;
     }
 
-    public List<String> getFactionsFromDataBase(){
+    //todo : change method to stream
+    public List<String> getFactionsFromDataBase() {
         List<String> data = new ArrayList<>();
-        for(Faction faction : factionRepository.findAll()){
+        for (Faction faction : factionRepository.findAll()) {
             data.add(faction.getName());
         }
         return data;
