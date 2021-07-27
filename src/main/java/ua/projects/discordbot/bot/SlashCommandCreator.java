@@ -34,20 +34,20 @@ public class SlashCommandCreator {
 
     private final List<SlashCommandOption> racesAndFactions = new ArrayList<>();
 
-    public void setFactions(List<String> inputData) {
+    private void setFactions(List<String> inputData) {
         factions = slashCommandInitializer.createCommandsOptions(inputData);
     }
 
-    public void setRaces(List<String> inputData) {
+    private void setRaces(List<String> inputData) {
         races = slashCommandInitializer.createCommandsOptions(inputData);
     }
 
-    public void setCommand() {
+    private void setCommand() {
         SlashCommand.with("show-units", "shows units from chosen race and faction", getEntities()).createGlobal(discordApi).join();
         SlashCommand.with("show-factions", "shows factions from chosen race", getRacesAndFactions()).createGlobal(discordApi).join();
     }
 
-    public void setEntities() {
+    private void setEntities() {
         entities.clear();
         Collections.addAll(entities,
                 SlashCommandOption.createWithChoices(SlashCommandOptionType.STRING, "race", "Choose race", true, races),
@@ -55,19 +55,19 @@ public class SlashCommandCreator {
                 SlashCommandOption.createWithChoices(SlashCommandOptionType.STRING, "unit", "Choose unit", true, units));
     }
 
-    public void setRacesAndFactions() {
+    private void setRacesAndFactions() {
         racesAndFactions.clear();
         Collections.addAll(racesAndFactions,
                 SlashCommandOption.createWithChoices(SlashCommandOptionType.STRING, "race", "Choose race", true, races));
     }
 
 
-    public List<SlashCommandOption> getEntities() {
+    private List<SlashCommandOption> getEntities() {
         setEntities();
         return entities;
     }
 
-    public List<SlashCommandOption> getRacesAndFactions() {
+    private List<SlashCommandOption> getRacesAndFactions() {
         setRacesAndFactions();
         return racesAndFactions;
     }
@@ -83,13 +83,5 @@ public class SlashCommandCreator {
         setRaces(dataTaker.getRacesFromDataBase());
         setFactions(dataTaker.getFactionsFromDataBase());
         setCommand();
-    }
-
-    @SuppressWarnings("unused")
-    public void deleteCommand() {
-        for (SlashCommand command : discordApi.getGlobalSlashCommands().join()) {
-            if (command.getName().equals("show-units"))
-                command.deleteGlobal();
-        }
     }
 }
