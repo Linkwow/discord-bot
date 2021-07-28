@@ -10,7 +10,7 @@ public interface FactionRepository extends JpaRepository<Faction, Integer> {
 
     Faction findFactionByNameIs(String factionName);
 
-    @Query("select f from Faction f " +
+    @Query("select f, r from Faction f " +
             "join Race r on f.race.id = r.id and r.id = :id")
     List<Faction> findFactionsByRace(Integer id);
 

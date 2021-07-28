@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ua.projects.discordbot.bot.SlashCommandCreator;
 
+//todo : remove interface. unnecessary.
 @Component
 public class CommonService {
 

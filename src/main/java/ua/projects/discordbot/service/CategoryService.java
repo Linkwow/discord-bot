@@ -27,6 +27,7 @@ public class CategoryService extends CommonService implements CommonRepository<C
         this.repository = repository;
     }
 
+    //todo : check for isBlank before Hibernate do that. remove try catch. try throw exception if it necessary
     public Category create(String unitCategory) {
         Category category = new Category();
         try {
@@ -48,6 +49,7 @@ public class CategoryService extends CommonService implements CommonRepository<C
         return repository.findAll();
     }
 
+    //todo : check for null id before Hibernate do that. remove try catch. try throw exception if it necessary
     @Override
     public Category find(Integer id) {
         Category category;
@@ -64,6 +66,7 @@ public class CategoryService extends CommonService implements CommonRepository<C
         return category;
     }
 
+    //todo : check for null id and isBlank before Hibernate do that. remove try catch. try throw exception if it necessary
     public Category update(Integer id, String unitCategory) {
         Category category = find(id);
         try {
@@ -79,6 +82,7 @@ public class CategoryService extends CommonService implements CommonRepository<C
         return category;
     }
 
+    //todo : change functionality. use one query to db
     @Override
     public void delete(Integer id) {
         Category category = find(id);
@@ -87,12 +91,14 @@ public class CategoryService extends CommonService implements CommonRepository<C
         logger.debug("Category was deleted successfully");
     }
 
+    //todo : check for isBlank
     public Category getCategoryByName(String name) {
         return Optional.ofNullable(repository.findCategoryByUnitCategoryIs(name))
                 .orElseThrow(
                         () -> EntityNotFoundException.notFoundException("Category with name " + name + " does absence in data base"));
     }
 
+    //todo : check for isBlank
     private boolean notPresent(String unitCategory) {
         if (repository.existsCategoryByUnitCategoryIs(unitCategory))
             throw new ValidationException("Unit category " + unitCategory + " presents in dataBase. Unit category should be unique.");

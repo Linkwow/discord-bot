@@ -13,7 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
+//todo : change all service test from integration to unit. all test should be independent from each other
 @SpringBootTest
 @ActiveProfiles("test")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -22,6 +22,7 @@ public class CategoryServiceTests {
     @Autowired
     private CategoryService categoryService;
 
+    //todo : change for something needed
     @BeforeEach
     void testContextLoads() {
         assertNotNull(categoryService);

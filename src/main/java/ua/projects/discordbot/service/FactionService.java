@@ -39,6 +39,7 @@ public class FactionService extends CommonService implements CommonRepository<Fa
         this.raceService = raceService;
     }
 
+    //todo : check for isBlank before Hibernate do that. remove try catch. try throw exception if it necessary
     public Faction create(String name, String raceName) {
         Faction faction = new Faction();
         try {
@@ -63,6 +64,7 @@ public class FactionService extends CommonService implements CommonRepository<Fa
         return repository.findAll();
     }
 
+    //todo : check for null id before Hibernate do that. remove try catch. try throw exception if it necessary
     @Override
     public Faction find(Integer id) {
         Faction faction;
@@ -79,6 +81,7 @@ public class FactionService extends CommonService implements CommonRepository<Fa
         return faction;
     }
 
+    //todo : check for null id and isBlank before Hibernate do that. remove try catch. try throw exception if it necessary
     public Faction update(Integer id, String name, String raceName) {
         Faction faction = find(id);
         if (notPresent(name))
@@ -93,6 +96,7 @@ public class FactionService extends CommonService implements CommonRepository<Fa
         return faction;
     }
 
+    //todo : change functionality. use one query to db
     @Override
     public void delete(Integer id) {
         Faction faction = find(id);
@@ -101,11 +105,13 @@ public class FactionService extends CommonService implements CommonRepository<Fa
         logger.debug("Faction was deleted successfully");
     }
 
+    //todo : check for isBlank
     public List<Faction> getFactionsByRace(String raceName) {
         Race race = raceService.getRaceByName(raceName);
         return repository.findFactionsByRace(race.getId());
     }
 
+    //todo : check for isBlank
     public Faction getFactionByName(String name) {
         return Optional.ofNullable(repository.findFactionByNameIs(name))
                 .orElseThrow(

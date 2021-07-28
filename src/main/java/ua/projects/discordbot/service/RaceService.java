@@ -27,6 +27,7 @@ public class RaceService extends CommonService implements CommonRepository<Race>
         this.repository = repository;
     }
 
+    //todo : check for isBlank before Hibernate do that. remove try catch. try throw exception if it necessary
     public Race create(String name) {
         Race race = new Race();
         try {
@@ -48,6 +49,7 @@ public class RaceService extends CommonService implements CommonRepository<Race>
         return repository.findAll();
     }
 
+    //todo : check for null id before Hibernate do that. remove try catch. try throw exception if it necessary
     @Override
     public Race find(Integer id) {
         Race race;
@@ -63,6 +65,7 @@ public class RaceService extends CommonService implements CommonRepository<Race>
         return race;
     }
 
+    //todo : check for null id and isBlank before Hibernate do that. remove try catch. try throw exception if it necessary
     public Race update(Integer id, String name) {
         Race race = find(id);
         try {
@@ -78,6 +81,7 @@ public class RaceService extends CommonService implements CommonRepository<Race>
         return race;
     }
 
+    //todo : change functionality. use one query to db
     @Override
     public void delete(Integer id) {
         Race race = find(id);
@@ -86,6 +90,7 @@ public class RaceService extends CommonService implements CommonRepository<Race>
         logger.debug("Race was deleted successfully");
     }
 
+    //todo : check for isBlank
     public Race getRaceByName(String name) {
         return Optional.ofNullable(repository.findRaceByNameIs(name))
                 .orElseThrow(

@@ -27,6 +27,7 @@ public class WeaponService extends CommonService implements CommonRepository<Wea
         this.repository = repository;
     }
 
+    //todo : check for isBlank before Hibernate do that. remove try catch. try throw exception if it necessary
     public Weapon create(String type){
         Weapon weapon = new Weapon();
         try {
@@ -48,6 +49,7 @@ public class WeaponService extends CommonService implements CommonRepository<Wea
         return repository.findAll();
     }
 
+    //todo : check for null id before Hibernate do that. remove try catch. try throw exception if it necessary
     @Override
     public Weapon find(Integer id) {
         Weapon weapon;
@@ -64,6 +66,7 @@ public class WeaponService extends CommonService implements CommonRepository<Wea
         return weapon;
     }
 
+    //todo : check for null id and isBlank before Hibernate do that. remove try catch. try throw exception if it necessary
     public Weapon update(Integer id, String type){
         Weapon weapon = find(id);
         try {
@@ -79,6 +82,7 @@ public class WeaponService extends CommonService implements CommonRepository<Wea
         return weapon;
     }
 
+    //todo : change functionality. use one query to db
     @Override
     public void delete(Integer id) {
         Weapon weapon = find(id);
@@ -87,6 +91,7 @@ public class WeaponService extends CommonService implements CommonRepository<Wea
         logger.debug("Weapon was deleted successfully");
     }
 
+    //todo : check for isBlank
     public Weapon getWeaponByType(String name) {
         return Optional.ofNullable(repository.findWeaponByTypeIs(name))
                 .orElseThrow(

@@ -23,6 +23,7 @@ import static org.springframework.test.web.servlet.ResultMatcher.matchAll;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+//todo : all test should be independent from each other
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
