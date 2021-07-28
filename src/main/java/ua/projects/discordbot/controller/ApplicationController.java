@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.HashMap;
 import java.util.Map;
 
+//todo : separate controller on admin and user controller(own)
 @Controller
 @RequestMapping("/total-war-warhammer")
 public class ApplicationController {
@@ -59,6 +60,7 @@ public class ApplicationController {
         this.weaponService = weaponService;
     }
 
+    //todo : write a test
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/user/showAllUnitsFromChosenFaction")
     public ModelAndView getUnitsOfFaction(
@@ -71,6 +73,7 @@ public class ApplicationController {
         return new ModelAndView("getAllUnits", units);
     }
 
+    //todo : write a test
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/user/showAllFactionsFromChosenRace")
     public ModelAndView getFactionsOfRace(
@@ -122,6 +125,7 @@ public class ApplicationController {
         return modelAndView;
     }
 
+    //todo : need to change a parameters to some model or something
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/admin/createUnit")
     public ModelAndView createUnit(@RequestParam(name = "name") String name,
@@ -147,6 +151,7 @@ public class ApplicationController {
                                    @RequestParam(name = "range", required = false, defaultValue = "0") Integer range,
                                    @RequestParam(name = "unitSize", required = false, defaultValue = "0") Integer unitSize,
                                    @RequestParam(name = "turns", required = false, defaultValue = "0") Integer turns) {
+        //todo : find another solution
         Map<String, Integer> parameters = createParametersMap(
                 cost, upkeep, health, leadership, speed, meleeAttack,
                 meleeDefence, chargeBonus, missileResistance,
@@ -169,6 +174,7 @@ public class ApplicationController {
         return modelAndView;
     }
 
+    //todo : maybe in all methods which returns the view with get and findAll start use some logic, like a if size==0 then return view with "Nothing g to show" e.g.?
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/user/getAttributes")
     public ModelAndView getAttributes() {
@@ -298,6 +304,7 @@ public class ApplicationController {
         raceService.update(id, name);
     }
 
+    //todo : need to change a parameters to some model or something
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/admin/updateUnit")
     public void updateUnit(@RequestParam(name = "id") Integer id,
@@ -324,6 +331,7 @@ public class ApplicationController {
                            @RequestParam(name = "range", required = false, defaultValue = "0") Integer range,
                            @RequestParam(name = "unitSize", required = false, defaultValue = "0") Integer unitSize,
                            @RequestParam(name = "turns", required = false, defaultValue = "0") Integer turns) {
+
         Map<String, Integer> parameters = createParametersMap(
                 cost, upkeep, health, leadership, speed, meleeAttack,
                 meleeDefence, chargeBonus, missileResistance,
@@ -375,6 +383,7 @@ public class ApplicationController {
         weaponService.delete(id);
     }
 
+    //todo : find another solution and remove this method
     private Map<String, Integer> createParametersMap(Integer cost, Integer upkeep, Integer health, Integer leadership, Integer speed,
                                                      Integer meleeAttack, Integer meleeDefence, Integer chargeBonus, Integer missileResistance,
                                                      Integer magicResistance, Integer armorProtection, Integer weaponDamage, Integer armourPiercingDamage,

@@ -14,6 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+//todo : change all service test from integration to unit. all test should be independent from each other
 @SpringBootTest
 @ActiveProfiles("test")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -22,6 +23,7 @@ public class FactionServiceTests {
     @Autowired
     private FactionService factionService;
 
+    //todo : change for something needed
     @Autowired
     private RaceService raceService;
 

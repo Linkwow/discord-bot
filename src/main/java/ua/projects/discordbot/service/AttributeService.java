@@ -27,6 +27,7 @@ public class AttributeService extends CommonService implements CommonRepository<
         this.repository = repository;
     }
 
+    //todo : check for isBlank before Hibernate do that. remove try catch. try throw exception if it necessary
     public Attribute create(String description) {
         Attribute attribute = new Attribute();
         try {
@@ -48,6 +49,7 @@ public class AttributeService extends CommonService implements CommonRepository<
         return repository.findAll();
     }
 
+    //todo : check for null id before Hibernate do that. remove try catch. try throw exception if it necessary
     @Override
     public Attribute find(Integer id) {
         Attribute attribute;
@@ -64,6 +66,7 @@ public class AttributeService extends CommonService implements CommonRepository<
         return attribute;
     }
 
+    //todo : check for null id and isBlank before Hibernate do that. remove try catch. try throw exception if it necessary
     public Attribute update(Integer id, String description) {
         Attribute attribute = find(id);
         try {
@@ -79,6 +82,7 @@ public class AttributeService extends CommonService implements CommonRepository<
         return attribute;
     }
 
+    //todo : change functionality. use one query to db
     @Override
     public void delete(Integer id) {
         Attribute attribute = find(id);
@@ -87,6 +91,7 @@ public class AttributeService extends CommonService implements CommonRepository<
         logger.debug("Attribute was deleted successfully");
     }
 
+    //todo : check for isBlank
     public Set<Attribute> getAttributesByName(String attributes) {
         String[] attributesToSearch = attributes.split(",\\s*");
         for (String description : attributesToSearch) {
@@ -99,6 +104,7 @@ public class AttributeService extends CommonService implements CommonRepository<
         return repository.findAttributesByDescriptionIn(attributesToSearch);
     }
 
+    //todo : check for isBlank
     private boolean notPresent(String description) {
         if (repository.existsAttributeByDescriptionIs(description))
             throw new ValidationException("Description " + description + " presents in dataBase. Description should be unique.");

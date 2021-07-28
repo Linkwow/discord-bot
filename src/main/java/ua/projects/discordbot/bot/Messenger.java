@@ -5,6 +5,7 @@ import org.javacord.api.entity.message.MessageAuthor;
 import org.javacord.api.interaction.SlashCommandInteraction;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +16,12 @@ public class Messenger {
     private final SlashCommandCreator slashCommandCreator;
 
     private final StringBuilder sb = new StringBuilder();
+
+    @Value("${my.server.address}")
+    private String serverAddress;
+
+    @Value("${server.port}")
+    private Integer serverPort;
 
     @Autowired
     public Messenger(DiscordApi discordApi, SlashCommandCreator slashCommandCreator) {
@@ -39,6 +46,7 @@ public class Messenger {
         });
     }
 
+    //todo : use some pattern to remove if else statement
     public void showUnits() {
         discordApi.addSlashCommandCreateListener(event -> {
             SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
@@ -51,16 +59,16 @@ public class Messenger {
                     sb.deleteCharAt(sb.length() - 1);
                 } else if (unitType.equals("Heroes")) {
                     sb.append(unitType);
-                    sb.delete(4, 5);
+                    sb.delete(4, 6);
                 } else {
                     sb.append(unitType);
                     sb.deleteCharAt(sb.length() - 1);
                 }
-                reference = "http://localhost:8080/total-war-warhammer/user/showAllUnitsFromChosenFaction?" + "faction=" + faction + "&category=" + sb;
+                reference = "http://" + serverAddress + ":" + serverPort + "/total-war-warhammer/user/showAllUnitsFromChosenFaction?" + "faction=" + faction + "&category=" + sb;
                 sb.setLength(0);
             } else if (slashCommandInteraction.getCommandName().equals("show-factions")) {
                 race = slashCommandInteraction.getFirstOptionStringValue().orElseThrow();
-                reference = "http://localhost:8080/total-war-warhammer/user/showAllFactionsFromChosenRace?race=" + race;
+                reference = "http://" + serverAddress + ":" + serverPort + "/total-war-warhammer/user/showAllFactionsFromChosenRace?race=" + race;
             }
             slashCommandInteraction.createImmediateResponder().setContent(reference).respond();
         });

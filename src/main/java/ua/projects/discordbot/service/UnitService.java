@@ -58,6 +58,7 @@ public class UnitService extends CommonService implements CommonRepository<Unit>
         this.attributeService = attributeService;
     }
 
+    //todo : check for isBlank before Hibernate do that. remove try catch. try throw exception if it necessary
     public Unit create(String name, String factionName, String unitCategory, String weaponType, String attributes, Map<String, Integer> parameters) {
         Faction faction = factionService.getFactionByName(Optional.ofNullable(factionName).orElseThrow(
                 () -> ValidationException.notValid("Faction name is mandatory.")));
@@ -93,6 +94,7 @@ public class UnitService extends CommonService implements CommonRepository<Unit>
         return repository.findAll();
     }
 
+    //todo : check for null id before Hibernate do that. remove try catch. try throw exception if it necessary
     @Override
     public Unit find(Integer id) {
         Unit unit;
@@ -109,6 +111,7 @@ public class UnitService extends CommonService implements CommonRepository<Unit>
         return unit;
     }
 
+    //todo : check for null id and isBlank before Hibernate do that. remove try catch. try throw exception if it necessary
     public Unit update(Integer id, String name, String factionName, String unitCategory, String weaponType, String attributes, Map<String, Integer> parameters) {
         Unit unit = find(id);
         unit.setName(Optional.ofNullable(name).orElse(unit.getName()));
@@ -132,6 +135,7 @@ public class UnitService extends CommonService implements CommonRepository<Unit>
         return unit;
     }
 
+    //todo : change functionality. use one query to db
     @Override
     public void delete(Integer id) {
         Unit unit = find(id);
@@ -144,6 +148,7 @@ public class UnitService extends CommonService implements CommonRepository<Unit>
         return repository.getUnitsByFactionAndCategory(faction, category);
     }
 
+    //todo : find another solution. maybe should use some custom mapper or something
     private void setUnitParameters(Unit unit, Map<String, Integer> parameters) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         for (String methodName : parameters.keySet()) {
             if (parameters.get(methodName) != null) {
