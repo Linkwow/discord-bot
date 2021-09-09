@@ -107,6 +107,7 @@ public class Unit {
             name = "attributes_units",
             joinColumns = @JoinColumn(name = "unit_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id", referencedColumnName = "id"))
+
     private Set<Attribute> attributeSet = new HashSet<>();
 
     public Unit() {
